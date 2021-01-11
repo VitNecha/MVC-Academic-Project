@@ -106,6 +106,7 @@ namespace SCE_Website.Controllers
             command.Parameters.Add("@fhour", SqlDbType.Int).Value =fhour;
             command.Parameters.Add("@classroom", SqlDbType.NVarChar, 50).Value = classroom;
             command.Parameters.Add("@lid", SqlDbType.NVarChar, 50).Value = lid;
+
             //Add exam schedule to course
             string ashour = Request.Form["ExamAStartHour"],
                 afhour = Request.Form["ExamAFinishHour"],
@@ -156,6 +157,7 @@ namespace SCE_Website.Controllers
             examCommand.Parameters.Add("@bstart", SqlDbType.Int).Value = bstarthour;
             examCommand.Parameters.Add("@bfinish", SqlDbType.Int).Value = bfinishhour;
             examCommand.Parameters.Add("@classroom", SqlDbType.NVarChar, 50).Value = classroom;
+
             //assign course to lecturer
             var addCourseToLecturer = "INSERT INTO tblLecturers " +
                                       "(LecturerID, CourseName) " +
@@ -449,6 +451,7 @@ namespace SCE_Website.Controllers
             return false;
         }
 
+
         private bool IsClashingExam(int startHour, int finishHour, DateTime dateToCheck, List<Exam> exams)
         {
             for(int i = 0; i < exams.Count(); i++)
@@ -461,6 +464,7 @@ namespace SCE_Website.Controllers
             return false;
         }
 
+        //Check of clashing hours for the same lecture
         private bool IsClashingHour(int startHour_src, int finishHour_src, int startHour_dest, int finishHour_dest)
         {
             bool a = startHour_src <= startHour_dest &&
