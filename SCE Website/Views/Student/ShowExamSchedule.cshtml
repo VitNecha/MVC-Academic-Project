@@ -1,0 +1,41 @@
+﻿@model SCE_Website.ViewModel.ExamViewModel
+@using SCE_Website.Models
+
+@{
+    ViewBag.Title = "ShowCoursesSchedule";
+}
+
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Course Name</th>
+                <th scope="col">Classroom</th>
+                <th scope="col">Exam A Date</th>
+                <th scope="col">Exam A Starting Hour</th>
+                <th scope="col">Exam A Ending Hour</th>
+                <th scope="col">Exam B Date</th>
+                <th scope="col">Exam B Starting Hour</th>
+                <th scope="col">Exam B Ending Hour</th>
+            </tr>
+        </thead>
+        @{
+        foreach (Exam obj in Model.Exams)
+        {
+            <tbody>
+                        <tr>
+                    <td>@obj.CourseName</td>
+                    @{
+                        <td>@obj.Classroom</td>
+                        <td>@obj.ExamADate.ToShortDateString()</td>
+                        <td>@obj.ExamAStart</td>
+                        <td>@obj.ExamAFinish</td>
+                        <td>@obj.ExamBDate.ToShortDateString()</td>
+                        <td>@obj.ExamBStart</td>
+                        <td>@obj.ExamBFinish</td>
+                    }
+                </tr>
+            </tbody>
+        }
+
+        }
+    </table>

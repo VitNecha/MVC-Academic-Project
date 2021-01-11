@@ -1,0 +1,27 @@
+﻿@model SCE_Website.ViewModel.StudentViewModel
+@using SCE_Website.Models
+
+    <form>
+        <table class="cointainer">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Course Grade</th>
+                    <th scope="col">Exam Grade</th>
+                </tr>
+            </thead>
+            @{
+                foreach (Student obj in Model.Students)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@obj.CourseName</td>
+                            <td>@obj.CourseGrade</td>
+                            <td>@obj.ExamGrade</td>
+                        </tr>
+                    </tbody>
+                }
+
+            }
+        </table>
+    </form>
