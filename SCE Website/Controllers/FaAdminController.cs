@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace SCE_Website.Controllers
 {
+    // Faculty admin controller
     public class FaAdminController : Controller
     {
         public ActionResult Menu()
@@ -20,10 +21,10 @@ namespace SCE_Website.Controllers
             var examDal = new ExamDal();
             var courses = (from x
                            in courseDal.Courses
-                           select x).ToList();
+                           select x).ToList(); 
             var exams = (from x
                          in examDal.Exams
-                         select x).ToList();
+                         select x).ToList(); 
             var coursesName = (from x
                                in courseDal.Courses
                                select x.CourseName).ToList();
